@@ -1,3 +1,13 @@
+<?php
+
+require('path.php');
+require('db/db.php');
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,39 +32,17 @@
 
   <!-- Main Container -->
   <div class="main-container">
-    <div class="aside">
-      <div class="logo">
-        <a href="index.php">CV</a>
-      </div>
+    <?php include(ROOT_PATH . "/includes/header.php") ?>
 
-      <!-- Nav Toggler Btn -->
-      <div class="nav-toggler">
-        <span></span>
-      </div>
 
-      <!-- Nav -->
-      <ul class="nav">
-        <li><a href="#home"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="#aboutme"><i class="fa fa-user"></i>About me</a></li>
-        <li><a href="#services"><i class="fa fa-list"></i>Services</a></li>
-        <li><a href="#portfolio"><i class="fa fa-envelope"></i>Portfolio</a></li>
-        <li><a href="#blog"><i class="fa fa-briefcase"></i>Blog</a></li>
-        <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
-        <li><a href="login.php"><i class="fa fa-sign-in"></i>Sign in</a></li>
-      </ul>
-
-      <!-- <div class="copyright-text">
-
-      </div> -->
-    </div>
 
     <div class="main-content">
       <section class="home section active" id="home">
         <div class="container">
           <div class="intro">
-            <img src="images/about.jpg" alt="profile" class="shadow-dark">
-            <h1>Vu Quyet Phu</h1>
-            <p>I'm a Web Developer</p>
+            <img src=" <?php echo 'data:image/png;base64,', ($row['image']); ?>" alt="profile" class="shadow-dark">
+            <h1><?php echo $row['fullname']; ?></h1>
+            <p>I'm a <?php echo $row['short_description']; ?></p>
             <div class="icon">
               <a href="#"><i class="fa fa-twitter"></i></a>
               <a href="#"><i class="fa fa-facebook"></i></a>
@@ -80,44 +68,42 @@
               <div class="row">
                 <div class="about-text padd">
                   <h3>
-                    I'm Vu Quyet Phu and  <span>Web Developer</span>
+                    I'm <?php echo $row['fullname']; ?> and <span><?php echo $row['short_description']; ?></span>
                   </h3>
-                  <p>Hi! My name is Vu Quyet Phu. I am a Web Developer, and I'm very passionate and dedicated 
-                    to my work. With 1/2 years experience as a professional Web developer, I have acquired the skills and knowledge necessary to make your project a success. I enjoy every step of the design process, from discussion and collaboration. 
-                  </p>
+                  <p><?php $row['description']; ?></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="info padd">
                   <div class="row">
-                        <div class="info-item padd">
-                          <p>Birthday : <span>12 May 2000</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Age :  <span>20</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Website : <span>www.domain.com</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Email : <span>vuquyetphu@gmail.com</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Degree : <span>M.Tech</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Phone : <span>0358673894</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>City : <span>Ha Noi</span></p>
-                        </div>
-                        <div class="info-item padd">
-                          <p>Freelance : <span>Available</span></p>
-                        </div>
-                      </div>
+                    <div class="info-item padd">
+                      <p>Birthday : <span><?php echo $row['birthday']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Age : <span><?php echo $row['age']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Website : <span><?php echo $row['website']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Email : <span><?php echo $row['email']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Degree : <span><?php echo $row['degree']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Phone : <span><?php echo $row['phone']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>City : <span><?php echo $row['city']; ?></span></p>
+                    </div>
+                    <div class="info-item padd">
+                      <p>Freelance : <span><?php echo $row['freelance']; ?></span></p>
+                    </div>
+                  </div>
 
-                      <!-- <div class="row">
+                  <!-- <div class="row">
                         <div class="buttons padd">
                           <a href="#" class="btn">Download</a>
                           <a href="#" class="btn">Download</a>
@@ -126,39 +112,18 @@
                 </div>
 
                 <div class="skill padd">
-                  <div class="row">
-                    <div class="skill-item padd">
-                      <h5>Javascripts</h5>
-                      <div class="progress">
-                        <div class="progress-in" style="width: 76%"></div>
-                        <div class="skill-persent">76%</div>
+                  <?php foreach ($skills as $skill) { ?>
+                    <div class="row">
+                      <div class="skill-item padd">
+                        <h5><?php echo $skill['skill_name']; ?></h5>
+                        <div class="progress">
+                          <div class="progress-in" style="width: <?php echo $skill['level_skill']; ?>"></div>
+                          <div class="skill-persent"><?php echo $skill['level_skill'] ?></div>
+                        </div>
                       </div>
                     </div>
+                  <?php } ?>
 
-                    <div class="skill-item padd">
-                      <h5>Wordpress</h5>
-                      <div class="progress">
-                        <div class="progress-in" style="width: 70%"></div>
-                        <div class="skill-persent">70%</div>
-                      </div>
-                    </div>
-
-                    <div class="skill-item padd">
-                      <h5>Php</h5>
-                      <div class="progress">
-                        <div class="progress-in" style="width: 80%"></div>
-                        <div class="skill-persent">80%</div>
-                      </div>
-                    </div>
-
-                    <div class="skill-item padd">
-                      <h5>Bootstrap</h5>
-                      <div class="progress">
-                        <div class="progress-in" style="width: 66%"></div>
-                        <div class="skill-persent">60%</div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -168,52 +133,16 @@
                   <div class="row">
                     <div class="timeline-box padd">
                       <div class="timeline .shadow-dark padd">
-                        
-                        <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2013 - 2015
-                          </h6>
-                          <h4 class="timeline-title">Master In Computer Science</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div>
-
-                        <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2011 - 2013
-                          </h6>
-                          <h4 class="timeline-title">Studied At Delhi University</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div>
-
-                        <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2008 - 2011
-                          </h6>
-                          <h4 class="timeline-title">Bachelor Degree</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div>
-
-                        <!-- <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2008 - 2011
-                          </h6>
-                          <h4 class="timeline-title">Bachelor Degree</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div> -->
-
-                        
+                        <?php foreach ($educations as $education) { ?>
+                          <div class="timeline-item">
+                            <div class="circle"></div>
+                            <h6 class="timeline-date">
+                              <i class="fa fa-calendar"></i> <?php echo $education['time'] ?>
+                            </h6>
+                            <h4 class="timeline-title"><?php echo $education['school_name'] ?></h4>
+                            <p class="timeline-text"><?php echo $education['description'] ?></p>
+                          </div>
+                        <?php } ?>
                       </div>
 
                     </div>
@@ -225,19 +154,18 @@
                   <div class="row">
                     <div class="timeline-box padd">
                       <div class="timeline .shadow-dark padd">
-                        
-                        <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2013 - 2015
-                          </h6>
-                          <h4 class="timeline-title">Backend Developer</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non 
-                            nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div>
+                        <?php foreach ($experiences as $experience) { ?>
+                          <div class="timeline-item">
+                            <div class="circle"></div>
+                            <h6 class="timeline-date">
+                              <i class="fa fa-calendar"></i> <?php echo $experience['time']  ?>
+                            </h6>
+                            <h4 class="timeline-title"><?php echo $experience['work']  ?></h4>
+                            <p class="timeline-text"><?php echo $experience['description']  ?></p>
+                          </div>
+                        <?php } ?>
 
-                        <div class="timeline-item">
+                        <!-- <div class="timeline-item">
                           <div class="circle"></div>
                           <h6 class="timeline-date">
                             <i class="fa fa-calendar"></i> 2011 - 2013
@@ -257,17 +185,17 @@
                           <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
                           nisi semper, et elementum lorem ornare.
                           </p>
-                        </div>
- 
+                        </div> -->
+
                       </div>
 
                     </div>
+                  </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
-        </div>
       </section>
       <!-- About me -->
 
@@ -339,138 +267,164 @@
       <!-- portfolio -->
       <section class="portfolio section" id="portfolio">
         <div class="container">
-            <div class="row">
-              <div class="section-title padd">
-                <h2>Portfolio</h2>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="portfolio-filter padd">
-                <button type="button" class="active" data-filter="all">All</button>
-                <button type="button" data-filter="web-design">Web Design</button>
-                <button type="button" data-filter="photography">Photography</button>
-                <button type="button" data-filter="wordpress">Wordpress</button>
-              </div>
-            </div>
-
-            <div class="row ">
-              <div class="portfolio-item padd" data-category="web-design">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/1.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Web Design</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="portfolio-item padd" data-category="wordpress">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/2.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Wordpress</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="portfolio-item padd" data-category="web-design">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/3.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Web Design</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="portfolio-item padd" data-category="photography">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/4.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Photography</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="portfolio-item padd" data-category="wordpress">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/5.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Wordpress</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="portfolio-item padd" data-category="web-design">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="images/portfolio/6.jpg" alt="">
-                  </div>
-                  <div class="portfolio-info">
-                    <h4>Web Design</h4>
-                    <div class="icon">
-                      <i class="fa fa-search"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        </div>
-      </section>
-      <!--portfolio  -->
-
-      <!-- Blog section -->
-      <section class="blog section" id="blog">
-        <div class="container">
           <div class="row">
             <div class="section-title padd">
-              <h2>Projects</h2>
+              <h2>Portfolio</h2>
             </div>
+          </div>
 
-            <div class="row padd">
+          <div class="row">
+            <div class="portfolio-filter padd">
+              <button type="button" class="active" data-filter="all">All</button>
+              <?php foreach($q as $qq) { ?>
+              <button type="button" data-filter="<?php echo $qq['0'] ?>"><?php echo $qq['0'] ?></button>
+              <?php } ?>
+              <!-- <button type="button" data-filter="photography">Photography</button>
+              <button type="button" data-filter="wordpress">Wordpress</button> -->
+              <!-- <button type="button" data-filter="wordpress">Wordpress</button> -->
+            </div>
+          </div>
+          
+          <div class="row ">
+            <?php foreach($portfolios as $portfolio) {?>
+            <div class="portfolio-item padd" data-category="<?php echo $portfolio['portfolio_name'] ?>">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="<?php echo 'data:image/png;base64,', base64_encode($portfolio['image']); ?>" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4><?php echo $portfolio['portfolio_name'] ?></h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php }?>
+
+            <!-- <div class="portfolio-item padd" data-category="wordpress">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="images/portfolio/2.jpg" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4>Wordpress</h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="portfolio-item padd" data-category="web-design">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="images/portfolio/3.jpg" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4>Web Design</h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="portfolio-item padd" data-category="photography">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="images/portfolio/4.jpg" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4>Photography</h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="portfolio-item padd" data-category="wordpress">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="images/portfolio/5.jpg" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4>Wordpress</h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="portfolio-item padd" data-category="web-design">
+              <div class="portfolio-item-inner shadow-dark">
+                <div class="portfolio-img">
+                  <img src="images/portfolio/6.jpg" alt="">
+                </div>
+                <div class="portfolio-info">
+                  <h4>Web Design</h4>
+                  <div class="icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="portfolio-item padd" data-category="web-design">
+            <div class="portfolio-item-inner shadow-dark">
+              <div class="portfolio-img">
+                <img src="images/portfolio/6.jpg" alt="">
+              </div>
+              <div class="portfolio-info">
+                <h4>Web Design</h4>
+                <div class="icon">
+                  <i class="fa fa-search"></i>
+                </div>
+              </div>
+            </div> -->
+
+          </div>
+      
+        </div>
+
+          
+        </div>
+      </section>
+    </div>
+
+    <!--portfolio  -->
+
+    <!-- Blog section -->
+    <section class="blog section" id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="section-title padd">
+            <h2>Blog</h2>
+          </div>
+
+
+          <div class="row padd">
+            <?php foreach ($blogs as $blog) { ?>
               <div class="blog-item padd">
                 <div class="blog-item-inner">
                   <div class="blog-img">
-                    <img src="images/blog/1.jpg" alt="blog">
+                    <img src="<?php echo 'data:image/png;base64,',($blog['image']); ?>" alt="blog">
                     <div class="blog-date">
-                      4 jun 2020
+                      <?php echo $blog['date']; ?>
                     </div>
                   </div>
                   <div class="blog-info">
-                    <h4 class="blog-title">Responsive Web Design</h4>
-                    <p class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo 
-                      quam, eum alias id, repellendus magni, quas.</p>
-                    <p class="blog-tags">Tags : <a href="#">Html</a> , <a href="#">css </a></p>
+                    <h4 class="blog-title"> <?php echo $blog['blog_name']; ?></h4>
+                    <p class="blog-description"><?php echo $blog['description_short']; ?></p>
+                    <p class="blog-tags">Tags : <a href="#"><?php echo $blog['tag']; ?></a> </p>
                   </div>
                 </div>
               </div>
+            <?php } ?>
 
-              <div class="blog-item padd">
+            <!-- <div class="blog-item padd">
                 <div class="blog-item-inner">
                   <div class="blog-img">
                     <img src="images/blog/2.jpg" alt="blog">
@@ -485,9 +439,9 @@
                     <p class="blog-tags">Tags : <a href="#">Html</a> , <a href="#">Javascript </a></p>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="blog-item padd">
+            <!-- <div class="blog-item padd">
                 <div class="blog-item-inner">
                   <div class="blog-img">
                     <img src="images/blog/3.jpg" alt="blog">
@@ -502,94 +456,94 @@
                     <p class="blog-tags">Tags : <a href="#">Html</a> , <a href="#">Javascript </a></p>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
-            </div>
           </div>
         </div>
-      </section>
-      <!-- Blog section -->
+      </div>
+    </section>
+    <!-- Blog section -->
 
-      <!-- contact -->
-      <section class="contact section" id="contact">
-        <div class="container">
-          <div class="row">
-            <div class="section-title padd">
-              <h2>Contact Me</h2>
-            </div>
+    <!-- contact -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="section-title padd">
+            <h2>Contact Me</h2>
           </div>
-          <div class="row">
-            <div class="contact-info-item padd">
-              <div class="icon"><i class="fa fa-phone"></i></div>
-              <h4>Call Us On</h4>
-              <p>0358673894</p>
-            </div>
-
-            <div class="contact-info-item padd">
-              <div class="icon"><i class="fa fa-map-marker"></i></div>
-              <h4>Office</h4>
-              <p>Van Hoang, Phu Xuyen, Ha Noi</p>
-            </div>
-
-            <div class="contact-info-item padd">
-              <div class="icon"><i class="fa fa-envelope "></i></div>
-              <h4>Email</h4>
-              <p>vuquyetphu@gmail.com</p>
-            </div>
-          </div>
-          <!-- contact form -->
-          <div class="row">
-            <div class="contact-form padd">
-              <div class="row">
-                <div class="form-item col-6 padd">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name">
-                  </div>
-                </div>
-
-                <div class="form-item col-6 padd">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email">
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="row">
-                <div class="form-item col-12 padd">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Subject">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="form-item col-12 padd">
-                  <div class="form-group">
-                    <textarea class="form-control" placeholder="Your Message..."></textarea>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="form-item col-12 padd">
-                  <button type="submit" class="btn">Send Message</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <!-- contact form -->
         </div>
-      </section>
-      <!-- contact -->
-    </div>
+        <div class="row">
+          <div class="contact-info-item padd">
+            <div class="icon"><i class="fa fa-phone"></i></div>
+            <h4>Call Us On</h4>
+            <p>0358673894</p>
+          </div>
+
+          <div class="contact-info-item padd">
+            <div class="icon"><i class="fa fa-map-marker"></i></div>
+            <h4>Office</h4>
+            <p>Van Hoang, Phu Xuyen, Ha Noi</p>
+          </div>
+
+          <div class="contact-info-item padd">
+            <div class="icon"><i class="fa fa-envelope "></i></div>
+            <h4>Email</h4>
+            <p>vuquyetphu@gmail.com</p>
+          </div>
+        </div>
+        <!-- contact form -->
+        <div class="row">
+          <div class="contact-form padd">
+            <div class="row">
+              <div class="form-item col-6 padd">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Name">
+                </div>
+              </div>
+
+              <div class="form-item col-6 padd">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Email">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="form-item col-12 padd">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Subject">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-item col-12 padd">
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Your Message..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-item col-12 padd">
+                <button type="submit" class="btn">Send Message</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- contact form -->
+      </div>
+    </section>
+    <!-- contact -->
+  </div>
   </div>
 
   <div class="lightbox">
     <div class="lightbox-content">
       <div class="lightbox-close">&times;</div>
-      <img src="images/portfolio/2.jpg" alt="" class="lightbox-img"  onclick="nextItem()">
+      <img src="images/portfolio/2.jpg" alt="" class="lightbox-img" onclick="nextItem()">
       <div class="lightbox-caption">
         <div class="caption-text"></div>
         <div class="caption-counter"></div>
@@ -602,10 +556,8 @@
     </div>
   </div>
 
-<!-- Template js -->
-<script src="js/script.js"></script>
+  <!-- Template js -->
+  <script src="js/script.js"></script>
 </body>
 
 </html>
-
-

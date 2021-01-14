@@ -1,5 +1,6 @@
 <?php require('path.php') ?>
 <?php require(ROOT_PATH . "/app/controller/user1.php") ?>
+<?php if(isset($_SESSION['code'])) {?>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,8 @@
 
 <body>
     <div class="auth-content">
-        <form action="login.php" method="post">
-            <h2 class="form-title">Login</h2>
+        <form action="newPassword.php" method="post">
+            <h2 class="form-title">New PassWord</h2>
             
             <?php if(count($errors) >0) { ?>
                 <div class="msg error">
@@ -27,20 +28,16 @@
             </div>
             <?php } ?>
             <div>
-                <label>Username</label>
-                <input type="text" name="username" class="text-input" value="<?php echo $username ?>">
-            </div>
-            
-            <div>
                 <label>Password</label>
-                <input type="password" name="password" class="text-input" value="<?php echo $password ?>"> 
+                <input type="password" name="password" class="text-input" value="<?php echo $password ?>" placeholder="Create new password">
             </div>
-            <a href="<?php  echo BASE_URL . '/email.php'?>">Forgot password?</a>
             <div>
-                <button type="submit" name="login-btn" class="btn btn-big">Login</button>
+                <label>Password Confirmation</label>
+                <input type="password" name="passwordConf" class="text-input" value="<?php echo $passwordConf ?>" placeholder="Confirm your password">
             </div>
-            <p>Or <a href="<?php  echo BASE_URL . '/register.php'?>">Sign Up</a></p>
-            <a href="<?php  echo BASE_URL . '/index.php'?>">← Back to Online CV</a>
+            <div>
+                <button type="submit" name="change-btn" class="btn btn-big">Change</button>
+            </div>
         </form>
     </div>
 
@@ -50,4 +47,6 @@
 
 </html>
 
-
+<?php } else {
+    header('location:' . BASE_URL . '/index.php');
+} ?>

@@ -452,6 +452,7 @@ select {
   text-decoration: none;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  /* padding: 10px; */
 }
 
 .home .intro .icon a:hover {
