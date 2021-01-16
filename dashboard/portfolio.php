@@ -62,6 +62,10 @@ require('../db/db.php');
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
+                                <div class="form-inline">
+                                    <label for="search" class="font-weight-blod lead text-dark">Search Record</label>
+                                    <input type="text" name="search" id="search_text" class="form-control form-control-lg rounded-0 border-primary" placeholder="Search...">
+                                </div>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -90,9 +94,9 @@ require('../db/db.php');
                             <a class="btn btn-primary" href="portfoliocreate.php" style="margin-top:10px">Create Portfolio</a>
 
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -117,23 +121,28 @@ require('../db/db.php');
     <!-- Morris Chart Js -->
     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
-
-
-    <!-- <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
-    <script>
-        function Del($name) {
-            return confirm("Do you want to delete the: " + $name + "?");
-        }
+            $("#search_text").keyup(function() {
+                var search = $(this).val();
+                $.ajax({
+                    url: 'portfolioaction.php',
+                    method: 'post',
+                    data: {
+                        query: search
+                    },
+                    success: function(response) {
+                        $("#dataTables-example").html(response);
+                    }
+
+                });
+            });
+        }); 
+        </script>
+        <script >
+            function Del($name) {
+                return confirm("Do you want to delete the: " + $name + "?");
+            }
     </script>
 
     <!-- Custom Js -->

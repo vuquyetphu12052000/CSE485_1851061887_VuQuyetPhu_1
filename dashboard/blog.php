@@ -61,6 +61,10 @@ require('../db/db.php');
             </div>
 
             <div class="panel-body">
+              <div class="form-inline">
+              <label for="search" class="font-weight-blod lead text-dark">Search Record</label>
+              <input type="text" name="search" id="search_text" class="form-control form-control-lg rounded-0 border-primary" placeholder="Search...">
+              </div>
               <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <thead>
@@ -82,7 +86,7 @@ require('../db/db.php');
                         <td><?php echo $blog['blog_name'] ?></td>
                         <td><?php echo $blog['date'] ?></td>
                         <td>
-                          <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', ($blog['image']); ?>" alt="">
+                          <img style="width: 100px; height: 50px;" src="<?php echo "data:image/png;base64,",($blog['image']); ?>" alt="">
                         </td>
                         <td><?php echo $blog['description_short'] ?></td>
                         <td><?php echo $blog['tag'] ?></td>
@@ -126,13 +130,31 @@ require('../db/db.php');
   <script src="assets/js/easypiechart-data.js"></script> -->
 
   <!-- <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
-  <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-  <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-  <script>
+  <!-- <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+  <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> -->
+  <!-- <script>
     $(document).ready(function() {
       $('#dataTables-example').dataTable();
     });
-  </script>
+  </script> -->
+<!-- Search -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#search_text").keyup(function(){
+      var search = $(this).val();
+      $.ajax({
+        url:'actionblog.php',
+        method: 'post',
+        data:{query:search},
+        success:function(response){
+          $("#dataTables-example").html(response);
+        }
+
+      });
+    });
+  });
+</script>
+
   <script>
     function Del($name) {
       return confirm("Do you want to delete the: " + $name + "?");

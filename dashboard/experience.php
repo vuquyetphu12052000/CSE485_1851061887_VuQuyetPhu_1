@@ -61,6 +61,10 @@ require('../db/db.php');
                         </div>
 
                         <div class="panel-body">
+                            <div class="form-inline">
+                                <label for="search" class="font-weight-blod lead text-dark">Search Record</label>
+                                <input type="text" name="search" id="search_text" class="form-control form-control-lg rounded-0 border-primary" placeholder="Search...">
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -115,16 +119,23 @@ require('../db/db.php');
     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
 
-
-    <!-- <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-    <script>
+    <!-- Search -->
+    <script type="text/javascript">
         $(document).ready(function() {
-            $('#dataTables-example').dataTable();
+            $("#search_text").keyup(function() {
+                var search = $(this).val();
+                $.ajax({
+                    url: 'experienceaction.php',
+                    method: 'post',
+                    data: {
+                        query: search
+                    },
+                    success: function(response) {
+                        $("#dataTables-example").html(response);
+                    }
+
+                });
+            });
         });
     </script>
     <script>
