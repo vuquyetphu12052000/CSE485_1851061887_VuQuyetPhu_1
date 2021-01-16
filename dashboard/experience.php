@@ -67,7 +67,7 @@ require('../db/db.php');
                                         <tr>
                                             <th>S No.</th>
                                             <th>Job Name</th>
-                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Description</th>
                                             <th></th>
                                         </tr>
@@ -80,7 +80,7 @@ require('../db/db.php');
                                                 <td><?php echo $experience['work'] ?></td>
                                                 <td><?php echo $experience['time'] ?></td>
                                                 <td><?php echo $experience['description'] ?></td>
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="experienceedit.php?idexperience= <?php echo $experience['id_experiences']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $experience['work']; ?>')" href="delete.php?idexperience= <?php echo $experience['id_experiences']; ?>" href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="experienceview.php?id= <?php echo $experience['id_experiences']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="experienceedit.php?idexperience= <?php echo $experience['id_experiences']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $experience['work']; ?>')" href="delete.php?idexperience= <?php echo $experience['id_experiences']; ?>" href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -116,10 +116,10 @@ require('../db/db.php');
     <script src="assets/js/morris/morris.js"></script>
 
 
-    <script src="assets/js/easypiechart.js"></script>
+    <!-- <script src="assets/js/easypiechart.js"></script>
     <script src="assets/js/easypiechart-data.js"></script>
 
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>

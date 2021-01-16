@@ -68,7 +68,7 @@ require('../db/db.php');
                                         <tr>
                                             <th>S No.</th>
                                             <th>School Name</th>
-                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Description</th>
                                             <th></th>
                                         </tr>
@@ -81,7 +81,7 @@ require('../db/db.php');
                                                 <td><?php echo $education['school_name'] ?></td>
                                                 <td><?php echo $education['time'] ?></td>
                                                 <td><?php echo $education['description'] ?></td>
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="educationedit.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $education['school_name']; ?>')" href="delete.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="educationview.php?id=<?php echo $education['id_education']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="educationedit.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $education['school_name']; ?>')" href="delete.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -116,10 +116,10 @@ require('../db/db.php');
     <script src="assets/js/morris/morris.js"></script>
 
 
-    <script src="assets/js/easypiechart.js"></script>
+    <!-- <script src="assets/js/easypiechart.js"></script>
     <script src="assets/js/easypiechart-data.js"></script>
 
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>

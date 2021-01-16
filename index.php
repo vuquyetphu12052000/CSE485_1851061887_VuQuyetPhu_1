@@ -165,27 +165,7 @@ require('db/db.php');
                           </div>
                         <?php } ?>
 
-                        <!-- <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2011 - 2013
-                          </h6>
-                          <h4 class="timeline-title">Frontend Developer</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div>
-
-                        <div class="timeline-item">
-                          <div class="circle"></div>
-                          <h6 class="timeline-date">
-                            <i class="fa fa-calendar"></i> 2008 - 2011
-                          </h6>
-                          <h4 class="timeline-title">Graphic Designer</h4>
-                          <p class="timeline-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non   
-                          nisi semper, et elementum lorem ornare.
-                          </p>
-                        </div> -->
+                        
 
                       </div>
 
@@ -276,267 +256,151 @@ require('db/db.php');
           <div class="row">
             <div class="portfolio-filter padd">
               <button type="button" class="active" data-filter="all">All</button>
-              <?php foreach($q as $qq) { ?>
-              <button type="button" data-filter="<?php echo $qq['0'] ?>"><?php echo $qq['0'] ?></button>
+              <?php foreach ($q as $qq) { ?>
+                <button type="button" data-filter="<?php echo $qq['0'] ?>"><?php echo $qq['0'] ?></button>
               <?php } ?>
-              <!-- <button type="button" data-filter="photography">Photography</button>
-              <button type="button" data-filter="wordpress">Wordpress</button> -->
-              <!-- <button type="button" data-filter="wordpress">Wordpress</button> -->
+
             </div>
           </div>
-          
+
           <div class="row ">
-            <?php foreach($portfolios as $portfolio) {?>
-            <div class="portfolio-item padd" data-category="<?php echo $portfolio['portfolio_name'] ?>">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4><?php echo $portfolio['portfolio_name'] ?></h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
+            <?php foreach ($portfolios as $portfolio) { ?>
+              <div class="portfolio-item padd" data-category="<?php echo $portfolio['portfolio_name'] ?>">
+                <div class="portfolio-item-inner shadow-dark">
+                  <div class="portfolio-img">
+                    <img src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
                   </div>
-                </div>
-              </div>
-            </div>
-            <?php }?>
-
-            <!-- <div class="portfolio-item padd" data-category="wordpress">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="images/portfolio/2.jpg" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4>Wordpress</h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="portfolio-item padd" data-category="web-design">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="images/portfolio/3.jpg" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4>Web Design</h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="portfolio-item padd" data-category="photography">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="images/portfolio/4.jpg" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4>Photography</h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="portfolio-item padd" data-category="wordpress">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="images/portfolio/5.jpg" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4>Wordpress</h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="portfolio-item padd" data-category="web-design">
-              <div class="portfolio-item-inner shadow-dark">
-                <div class="portfolio-img">
-                  <img src="images/portfolio/6.jpg" alt="">
-                </div>
-                <div class="portfolio-info">
-                  <h4>Web Design</h4>
-                  <div class="icon">
-                    <i class="fa fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="portfolio-item padd" data-category="web-design">
-            <div class="portfolio-item-inner shadow-dark">
-              <div class="portfolio-img">
-                <img src="images/portfolio/6.jpg" alt="">
-              </div>
-              <div class="portfolio-info">
-                <h4>Web Design</h4>
-                <div class="icon">
-                  <i class="fa fa-search"></i>
-                </div>
-              </div>
-            </div> -->
-
-          </div>
-      
-        </div>
-
-          
-        </div>
-      </section>
-    </div>
-
-    <!--portfolio  -->
-
-    <!-- Blog section -->
-    <section class="blog section" id="blog">
-      <div class="container">
-        <div class="row">
-          <div class="section-title padd">
-            <h2>Blog</h2>
-          </div>
-
-
-          <div class="row padd">
-            <?php foreach ($blogs as $blog) { ?>
-              <div class="blog-item padd">
-                <div class="blog-item-inner">
-                  <div class="blog-img">
-                    <img src="<?php echo 'data:image/png;base64,',($blog['image']); ?>" alt="blog">
-                    <div class="blog-date">
-                      <?php echo $blog['date']; ?>
+                  <div class="portfolio-info">
+                    <h4><?php echo $portfolio['portfolio_name'] ?></h4>
+                    <div class="icon">
+                      <i class="fa fa-search"></i>
                     </div>
-                  </div>
-                  <div class="blog-info">
-                    <h4 class="blog-title"> <?php echo $blog['blog_name']; ?></h4>
-                    <p class="blog-description"><?php echo $blog['description_short']; ?></p>
-                    <p class="blog-tags">Tags : <a href="#"><?php echo $blog['tag']; ?></a> </p>
                   </div>
                 </div>
               </div>
             <?php } ?>
 
-            <!-- <div class="blog-item padd">
-                <div class="blog-item-inner">
-                  <div class="blog-img">
-                    <img src="images/blog/2.jpg" alt="blog">
-                    <div class="blog-date">
-                      4 jun 2020
-                    </div>
-                  </div>
-                  <div class="blog-info">
-                    <h4 class="blog-title">Creative Slideshow</h4>
-                    <p class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo 
-                      quam, eum alias id, repellendus magni, quas.</p>
-                    <p class="blog-tags">Tags : <a href="#">Html</a> , <a href="#">Javascript </a></p>
-                  </div>
-                </div>
-              </div> -->
-
-            <!-- <div class="blog-item padd">
-                <div class="blog-item-inner">
-                  <div class="blog-img">
-                    <img src="images/blog/3.jpg" alt="blog">
-                    <div class="blog-date">
-                    4 jun 2020
-                    </div>
-                  </div>
-                  <div class="blog-info">
-                    <h4 class="blog-title">Image Gallery Lightbox</h4>
-                    <p class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, porro rem quod illo 
-                      quam, eum alias id, repellendus magni, quas.</p>
-                    <p class="blog-tags">Tags : <a href="#">Html</a> , <a href="#">Javascript </a></p>
-                  </div>
-                </div>
-              </div> -->
 
           </div>
+
+        </div>
+
+
+    </div>
+    </section>
+  </div>
+
+  <!--portfolio  -->
+
+  <!-- Blog section -->
+  <section class="blog section" id="blog">
+    <div class="container">
+      <div class="row">
+        <div class="section-title padd">
+          <h2>Blog</h2>
+        </div>
+
+
+        <div class="row padd">
+          <?php foreach ($blogs as $blog) { ?>
+            <div class="blog-item padd">
+              <div class="blog-item-inner">
+                <div class="blog-img">
+                  <img src="<?php echo 'data:image/png;base64,', ($blog['image']); ?>" alt="blog">
+                  <div class="blog-date">
+                    <?php echo $blog['date']; ?>
+                  </div>
+                </div>
+                <div class="blog-info">
+                  <h4 class="blog-title"> <?php echo $blog['blog_name']; ?></h4>
+                  <p class="blog-description"><?php echo $blog['description_short']; ?></p>
+                  <p class="blog-tags">Tags : <a href="#"><?php echo $blog['tag']; ?></a> </p>
+                </div>
+              </div>
+            </div>
+          <?php } ?>
+
+
+
         </div>
       </div>
-    </section>
-    <!-- Blog section -->
+    </div>
+  </section>
+  <!-- Blog section -->
 
-    <!-- contact -->
-    <section class="contact section" id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="section-title padd">
-            <h2>Contact Me</h2>
-          </div>
+  <!-- contact -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="section-title padd">
+          <h2>Contact Me</h2>
         </div>
-        <div class="row">
-          <div class="contact-info-item padd">
-            <div class="icon"><i class="fa fa-phone"></i></div>
-            <h4>Call Us On</h4>
-            <p>0358673894</p>
-          </div>
-
-          <div class="contact-info-item padd">
-            <div class="icon"><i class="fa fa-map-marker"></i></div>
-            <h4>Office</h4>
-            <p>Van Hoang, Phu Xuyen, Ha Noi</p>
-          </div>
-
-          <div class="contact-info-item padd">
-            <div class="icon"><i class="fa fa-envelope "></i></div>
-            <h4>Email</h4>
-            <p>vuquyetphu@gmail.com</p>
-          </div>
-        </div>
-        <!-- contact form -->
-        <div class="row">
-          <div class="contact-form padd">
-            <div class="row">
-              <div class="form-item col-6 padd">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Name">
-                </div>
-              </div>
-
-              <div class="form-item col-6 padd">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Email">
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="form-item col-12 padd">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Subject">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-item col-12 padd">
-                <div class="form-group">
-                  <textarea class="form-control" placeholder="Your Message..."></textarea>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-item col-12 padd">
-                <button type="submit" class="btn">Send Message</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <!-- contact form -->
       </div>
-    </section>
-    <!-- contact -->
+      <div class="row">
+        <div class="contact-info-item padd">
+          <div class="icon"><i class="fa fa-phone"></i></div>
+          <h4>Call Us On</h4>
+          <p><?php echo $row['phone']; ?></p>
+        </div>
+
+        <div class="contact-info-item padd">
+          <div class="icon"><i class="fa fa-map-marker"></i></div>
+          <h4>Office</h4>
+          <p>Van Hoang, Phu Xuyen, Ha Noi</p>
+        </div>
+
+        <div class="contact-info-item padd">
+          <div class="icon"><i class="fa fa-envelope "></i></div>
+          <h4>Email</h4>
+          <p><?php echo $row['email']; ?></p>
+        </div>
+      </div>
+      <!-- contact form -->
+      <div class="row">
+        <div class="contact-form padd">
+          <div class="row">
+            <div class="form-item col-6 padd">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name">
+              </div>
+            </div>
+
+            <div class="form-item col-6 padd">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Email">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="form-item col-12 padd">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-item col-12 padd">
+              <div class="form-group">
+                <textarea class="form-control" placeholder="Your Message..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-item col-12 padd">
+              <button type="submit" class="btn">Send Message</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- contact form -->
+    </div>
+  </section>
+  <!-- contact -->
   </div>
   </div>
 

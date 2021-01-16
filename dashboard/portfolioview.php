@@ -58,30 +58,19 @@ require('../db/db.php');
           <!-- Advanced Tables -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              Advanced Tables
+              Portfolio
             </div>
             <div class="panel-body">
-              <form action="" method="post" enctype="multipart/form-data">
 
-                <div class="form-group">
-                  <label for="">Portfolio Name</label>
-                  <input type="text" name="portfolio_name" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Image</label>
-                  <input type="file" name="image" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" name="portfoliocreate" class="btn btn-success">Save</button>
-                  <a class="btn btn-success" href="portfolio.php">Cancel</a>
-                </div>
-              </form>
+              <p>ID: <span><?php echo $portfolio['id']; ?></span> </p>
+              <p>Portfolio Name: <span><?php echo $portfolio['portfolio_name'];  ?></span> </p>
+              <p>Image: <span><img style="width: 200px; height: 100px;" src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt=""></span></p>
+              <a class="btn btn-primary" href="portfolio.php">Cancel</a>
 
             </div>
+
           </div>
-          <!--End Advanced Tables -->
+
         </div>
       </div>
 
@@ -106,19 +95,6 @@ require('../db/db.php');
   <!-- Morris Chart Js -->
   <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
   <script src="assets/js/morris/morris.js"></script>
-
-
-  <!-- <script src="assets/js/easypiechart.js"></script>
-  <script src="assets/js/easypiechart-data.js"></script>
-
-  <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-  <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-  <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#dataTables-example').dataTable();
-    });
-  </script> -->
 
   <!-- Custom Js -->
   <script src="assets/js/custom-scripts.js"></script>

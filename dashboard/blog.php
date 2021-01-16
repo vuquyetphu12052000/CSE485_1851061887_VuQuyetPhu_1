@@ -86,7 +86,7 @@ require('../db/db.php');
                         </td>
                         <td><?php echo $blog['description_short'] ?></td>
                         <td><?php echo $blog['tag'] ?></td>
-                        <td><a href="#"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="editblog.php?id=<?php echo $blog['id_blog'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $blog['blog_name']; ?>')" href="delete.php?id=<?php echo $blog['id_blog'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        <td><a href="blogview.php?id=<?php echo $blog['id_blog'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="editblog.php?id=<?php echo $blog['id_blog'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $blog['blog_name']; ?>')" href="delete.php?id=<?php echo $blog['id_blog'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                       </tr>
                     <?php } ?>
                   </tbody>
@@ -122,10 +122,10 @@ require('../db/db.php');
   <script src="assets/js/morris/morris.js"></script>
 
 
-  <script src="assets/js/easypiechart.js"></script>
-  <script src="assets/js/easypiechart-data.js"></script>
+  <!-- <script src="assets/js/easypiechart.js"></script>
+  <script src="assets/js/easypiechart-data.js"></script> -->
 
-  <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+  <!-- <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
   <script src="assets/js/dataTables/jquery.dataTables.js"></script>
   <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
   <script>

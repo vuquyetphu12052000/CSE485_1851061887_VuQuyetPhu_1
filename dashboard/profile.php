@@ -65,7 +65,7 @@ require('../db/db.php');
                             <section class="home section" id="home">
                                 <div class="container">
                                     <div class="intro">
-                                        <img src=" <?php echo 'data:image/png;base64,',($row['image']); ?>" alt="profile" class="shadow-dark">
+                                        <img src=" <?php echo 'data:image/png;base64,', ($row['image']); ?>" alt="profile" class="shadow-dark">
                                         <!-- <form action="" method="POST">
                                             <div class="form-group" style="margin-top:-25px ; margin-left:100px">
                                                 <label for="upload-backgroud">
@@ -85,7 +85,7 @@ require('../db/db.php');
 
                                     </div>
                             </section>
-                           
+
                             <form method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="">Fullname</label>
@@ -125,7 +125,7 @@ require('../db/db.php');
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" name="sbm1" class="btn btn-success" >Edit</button>
+                                    <button type="submit" name="sbm1" class="btn btn-success">Edit</button>
                                 </div>
                             </form>
                         </div>
@@ -154,13 +154,6 @@ require('../db/db.php');
     <!-- Morris Chart Js -->
     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
-
-
-    <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
 

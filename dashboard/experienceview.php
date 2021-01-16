@@ -15,14 +15,14 @@ require('../db/db.php');
           <a href="blog.php"><i class="fa fa-desktop"></i> Blog</a>
         </li>
         <li>
-          <a href="education.php"><i class="fa fa-bar-chart-o"></i> Educations</a>
+          <a href="education.php"><i class="fa fa-bar-chart-o"></i> Education</a>
         </li>
         <li>
-          <a href="experience.php"><i class="fa fa-qrcode"></i> Experience</a>
+          <a href="experience.php" class="active-menu"><i class="fa fa-qrcode"></i> Experience</a>
         </li>
 
         <li>
-          <a href="portfolio.php" class="active-menu"><i class="fa fa-table"></i> Portfolios</a>
+          <a href="portfolio.php"><i class="fa fa-table"></i> Portfolios </a>
         </li>
         <li>
           <a href="skill.php"><i class="fa fa-edit"></i> Skills </a>
@@ -45,7 +45,7 @@ require('../db/db.php');
   <div id="page-wrapper">
     <div class="header">
       <h1 class="page-header">
-        Portfolios Page
+        Experiences Page
       </h1>
 
 
@@ -55,42 +55,30 @@ require('../db/db.php');
 
       <div class="row">
         <div class="col-md-12">
-          <!-- Advanced Tables -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              Advanced Tables
+              Experiences
             </div>
+
             <div class="panel-body">
-              <form action="" method="post" enctype="multipart/form-data">
 
-                <div class="form-group">
-                  <label for="">Portfolio Name</label>
-                  <input type="text" name="portfolio_name" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Image</label>
-                  <input type="file" name="image" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" name="portfoliocreate" class="btn btn-success">Save</button>
-                  <a class="btn btn-success" href="portfolio.php">Cancel</a>
-                </div>
-              </form>
-
+              <p>ID: <span><?php echo $experience['id_experiences']; ?></span> </p>
+              <p>Job Name: <span><?php echo $experience['work'];  ?></span> </p>
+              <p>Time: <span><?php echo $experience['time'];  ?></span></p>
+              <p>Description: <span><?php echo $experience['description'];  ?></span></p>
+              <a class="btn btn-primary" href="experience.php">Cancel</a>
             </div>
           </div>
-          <!--End Advanced Tables -->
         </div>
       </div>
 
-    </div>
 
-  </div>
-  <!-- /. PAGE INNER  -->
+
+    </div>
+    <!-- /. PAGE INNER  -->
   </div>
   <!-- /. PAGE WRAPPER  -->
+  </div>
   <!-- /. WRAPPER  -->
   <!-- JS Scripts-->
   <!-- jQuery Js -->
@@ -106,19 +94,6 @@ require('../db/db.php');
   <!-- Morris Chart Js -->
   <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
   <script src="assets/js/morris/morris.js"></script>
-
-
-  <!-- <script src="assets/js/easypiechart.js"></script>
-  <script src="assets/js/easypiechart-data.js"></script>
-
-  <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-  <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-  <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#dataTables-example').dataTable();
-    });
-  </script> -->
 
   <!-- Custom Js -->
   <script src="assets/js/custom-scripts.js"></script>

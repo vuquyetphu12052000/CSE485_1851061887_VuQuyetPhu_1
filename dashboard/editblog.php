@@ -124,7 +124,7 @@ require('../db/db.php');
   <script src="assets/js/morris/morris.js"></script>
 
 
-  <script src="assets/js/easypiechart.js"></script>
+  <!-- <script src="assets/js/easypiechart.js"></script>
   <script src="assets/js/easypiechart-data.js"></script>
 
   <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
@@ -134,7 +134,7 @@ require('../db/db.php');
     $(document).ready(function() {
       $('#dataTables-example').dataTable();
     });
-  </script>
+  </script> -->
 
   <!-- Custom Js -->
   <script src="assets/js/custom-scripts.js"></script>

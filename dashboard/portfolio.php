@@ -81,7 +81,7 @@ require('../db/db.php');
                                                     <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
                                                 </td>
 
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="portfolioedit.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $portfolio['portfolio_name']; ?>')" href="delete.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="portfolioview.php?id=<?php echo $portfolio['id'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="portfolioedit.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $portfolio['portfolio_name']; ?>')" href="delete.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -119,10 +119,10 @@ require('../db/db.php');
     <script src="assets/js/morris/morris.js"></script>
 
 
-    <script src="assets/js/easypiechart.js"></script>
+    <!-- <script src="assets/js/easypiechart.js"></script>
     <script src="assets/js/easypiechart-data.js"></script>
 
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>

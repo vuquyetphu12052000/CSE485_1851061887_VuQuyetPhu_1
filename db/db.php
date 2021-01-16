@@ -260,6 +260,12 @@ if (isset($_POST['blogedit'])) {
   }
 }
 
+//blog view
+if(isset($_GET['id'])){
+  $blog = selectOne('blog', ['id_blog' => $_GET['id']]);
+  // var_dump($blog);
+}
+
 // Create education
 // if(isset($_POST['educationcreate'])){
 //   unset($_POST['educationcreate']);
@@ -299,7 +305,10 @@ if (isset($_POST['educationedit'])) {
     header('location:' . BASE_URL . '/dashboard/education.php');
   }
 }
-
+//education view
+if(isset($_GET['id'])){
+  $education = selectOne('educations', ['id_education' => $_GET['id']]);
+}
 //create experience
 if (isset($_POST['experiencecreate'])) {
   $jobname = $_POST['experience_name'];
@@ -330,7 +339,10 @@ if (isset($_POST['experienceedit'])) {
     header('location:' . BASE_URL . '/dashboard/experience.php');
   }
 }
-
+//view experience
+if(isset($_GET['id'])){
+  $experience = selectOne('experiences', ['id_experiences' => $_GET['id']]);
+}
 //create skill
 $errors = array();
 $skillname = '';
@@ -372,6 +384,10 @@ if (isset($_POST['skilledit'])) {
     }
   }
 }
+//skill view
+if(isset($_GET['id'])){
+  $skill = selectOne('skills', ['id_skill' => $_GET['id']]);
+}
 //portfolio
 if (isset($_POST['portfoliocreate'])) {
   $portfolio_name = $_POST['portfolio_name'];
@@ -407,6 +423,10 @@ if (isset($_POST['portfolioedit'])) {
     header('location:' . BASE_URL . '/dashboard/portfolio.php');
   } else {
   }
+}
+//portfolio view
+if(isset($_GET['id'])){
+  $portfolio = selectOne('portfolios', ['id' => $_GET['id']]);
 }
 
 //Changepasswork

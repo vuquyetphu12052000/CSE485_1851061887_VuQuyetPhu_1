@@ -78,7 +78,7 @@ require('../db/db.php');
                                                 <td><?php echo $skill['level_skill'] ?></td>
 
 
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="skilledit.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $skill['skill_name']; ?>')" href="delete.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="skillview.php?id=<?php echo $skill['id_skill'] ?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="skilledit.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $skill['skill_name']; ?>')" href="delete.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -109,12 +109,6 @@ require('../db/db.php');
     <!-- Morris Chart Js -->
     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
-
-
-    <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <script>

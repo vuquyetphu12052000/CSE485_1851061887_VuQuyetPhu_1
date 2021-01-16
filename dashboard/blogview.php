@@ -12,17 +12,17 @@ require('../db/db.php');
           <a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
         <li>
-          <a href="blog.php"><i class="fa fa-desktop"></i> Blog</a>
+          <a href="blog.php" class="active-menu"><i class="fa fa-desktop"></i> Blog</a>
         </li>
         <li>
-          <a href="education.php"><i class="fa fa-bar-chart-o"></i> Educations</a>
+          <a href="education.php"><i class="fa fa-bar-chart-o"></i> Education</a>
         </li>
         <li>
           <a href="experience.php"><i class="fa fa-qrcode"></i> Experience</a>
         </li>
 
         <li>
-          <a href="portfolio.php" class="active-menu"><i class="fa fa-table"></i> Portfolios</a>
+          <a href="portfolio.php"><i class="fa fa-table"></i> Portfolios</a>
         </li>
         <li>
           <a href="skill.php"><i class="fa fa-edit"></i> Skills </a>
@@ -31,7 +31,6 @@ require('../db/db.php');
 
         <li>
           <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
-
         </li>
         <li>
           <a href="empty.php"><i class="fa fa-fw fa-file"></i> Empty Page</a>
@@ -45,55 +44,46 @@ require('../db/db.php');
   <div id="page-wrapper">
     <div class="header">
       <h1 class="page-header">
-        Portfolios Page
+        Blog Page
       </h1>
 
 
     </div>
-
     <div id="page-inner">
 
+
       <div class="row">
+
         <div class="col-md-12">
-          <!-- Advanced Tables -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              Advanced Tables
+              Blog View
             </div>
+
             <div class="panel-body">
-              <form action="" method="post" enctype="multipart/form-data">
+              <p>ID: <span><?php echo $blog['id_blog']; ?></span> </p>
+              <p>Blog Name: <span><?php echo $blog['blog_name'];  ?></span> </p>
+              <p>Date: <span><?php echo $blog['date'];  ?></span></p>
+              <p>Image: <span><img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', ($blog['image']); ?>" alt=""></span></p>
+              <p>Description: <span><?php echo $blog['description_short'];  ?></span></p>
+              <p>Tag: <span><?php echo $blog['tag']; ?></span></p>
 
-                <div class="form-group">
-                  <label for="">Portfolio Name</label>
-                  <input type="text" name="portfolio_name" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Image</label>
-                  <input type="file" name="image" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" name="portfoliocreate" class="btn btn-success">Save</button>
-                  <a class="btn btn-success" href="portfolio.php">Cancel</a>
-                </div>
-              </form>
-
+              <a class="btn btn-primary" href="blog.php">Cancel</a>
             </div>
           </div>
-          <!--End Advanced Tables -->
         </div>
       </div>
 
-    </div>
 
-  </div>
-  <!-- /. PAGE INNER  -->
+
+
+    </div>
+    <!-- /. PAGE INNER  -->
   </div>
   <!-- /. PAGE WRAPPER  -->
+  </div>
   <!-- /. WRAPPER  -->
   <!-- JS Scripts-->
-  <!-- jQuery Js -->
   <!-- jQuery Js -->
   <!-- jQuery Js -->
   <script src="assets/js/jquery-1.10.2.js"></script>
@@ -107,22 +97,8 @@ require('../db/db.php');
   <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
   <script src="assets/js/morris/morris.js"></script>
 
-
-  <!-- <script src="assets/js/easypiechart.js"></script>
-  <script src="assets/js/easypiechart-data.js"></script>
-
-  <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-  <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-  <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#dataTables-example').dataTable();
-    });
-  </script> -->
-
   <!-- Custom Js -->
   <script src="assets/js/custom-scripts.js"></script>
-
 
   </body>
 
