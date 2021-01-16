@@ -1,14 +1,8 @@
 <?php
 require('connect.php');
 session_start();
-// $sql = "SELECT * FROM users WHERE id_user = '1'";
-// $query = mysqli_query($conn,$sql);
-// if($query && (mysqli_num_rows($query)>0)){
-//   $row= mysqli_fetch_assoc($query);
-// var_dump($row);
 
-// }
-// var_dump($conn);
+
 function dd($value)
 {
   echo "<pre>", print_r($value, true);
@@ -121,7 +115,7 @@ function deleteblog($table, $id)
 {
   global $conn;
   $sql = "DELETE FROM $table WHERE id_blog = ?";
-  
+
   $stmt = executeQuery($sql, ['id_blog' => $id]);
   return $stmt->affected_rows;
 }
@@ -199,24 +193,24 @@ if (isset($_POST['sbm1'])) {
   }
 }
 //create blog
-if(isset($_POST['blogcreate'])){
+if (isset($_POST['blogcreate'])) {
   unset($_POST['blogcreate']);
   $image = addslashes($_FILES["image"]["tmp_name"]);
   $image = file_get_contents($image);
-  $image= base64_encode($image);
-  $description= $_POST['description_short'];
-  $tag=$_POST['tag'];
-  $user= $row['id_user'];
+  $image = base64_encode($image);
+  $description = $_POST['description_short'];
+  $tag = $_POST['tag'];
+  $user = $row['id_user'];
   $blog_name = $_POST['blog_name'];
   $date = $_POST['date'];
   $sql = "INSERT INTO blog(blog_name,date,image,description_short,tag,id_user) VALUES ('$blog_name', '$date', '$image', '$description','$tag','$user')";
   // var_dump($sql);
-  $query= mysqli_query($conn,$sql);
-  if($query){
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
     header('location:' . BASE_URL . '/dashboard/blog.php');
+  } else {
+    echo 'không thành công';
   }
-  else{echo 'không thành công';}
-  
 }
 //editblog
 // if (isset($_GET['id'])) {
@@ -240,21 +234,19 @@ if(isset($_POST['blogcreate'])){
 //   // dd($data);
 //   update('blog', ['id_blog' => $_GET['id']], $data);
 // }
-if(isset($_GET['id'])){
-  $blog = selectOne('blog', ['id_blog'=> $_GET['id']]);
+if (isset($_GET['id'])) {
+  $blog = selectOne('blog', ['id_blog' => $_GET['id']]);
   $id = $_GET['id'];
-  
 }
-if(isset($_POST['blogedit'])){
-  $blog_name= $_POST['blogname'];
+if (isset($_POST['blogedit'])) {
+  $blog_name = $_POST['blogname'];
   $date = $_POST['date'];
-  if($_FILES["image"]["tmp_name"] === ""){
+  if ($_FILES["image"]["tmp_name"] === "") {
     $image = $blog['image'];
-  }
-  else {
+  } else {
     $image = addslashes($_FILES["image"]["tmp_name"]);
     $image = file_get_contents($image);
-    $image= base64_encode($image);
+    $image = base64_encode($image);
   }
   $description = $_POST['description'];
   $tag = $_POST['tag'];
@@ -266,7 +258,6 @@ if(isset($_POST['blogedit'])){
   } else {
     echo 'khong thanh cong';
   }
-
 }
 
 // Create education
@@ -277,54 +268,193 @@ if(isset($_POST['blogedit'])){
 //   $education_id=create('educations',$_POST);
 //   $education = selectOne('educations',$education_id);
 //   // dd($_POST);
-  
+
 // }
-if(isset($_POST['educationcreate'])){
+if (isset($_POST['educationcreate'])) {
   $school_name = $_POST['school_name'];
   $time = $_POST['time'];
   $description = $_POST['description_short'];
-  $id_user= $row['id_user'];
+  $id_user = $row['id_user'];
   $sql = "INSERT INTO educations(school_name, time, description,id_user) VALUES('$school_name', '$time', '$description', '$id_user'
   )";
-  $query = mysqli_query($conn,$sql);
-  if($query){
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
     header('location:' . BASE_URL . '/dashboard/education.php');
-  }
-  else{
-
+  } else {
   }
 }
 
 //education edit
-if(isset($_GET['ideducation'])){
-  $education = selectOne('educations', ['id_education'=> $_GET['ideducation']]);
+if (isset($_GET['ideducation'])) {
+  $education = selectOne('educations', ['id_education' => $_GET['ideducation']]);
   $id_education = $_GET['ideducation'];
 }
-if(isset($_POST['educationedit'])){
+if (isset($_POST['educationedit'])) {
   $school_name = $_POST['school_name'];
   $time = $_POST['time'];
   $description = $_POST['description_short'];
   $sql = "UPDATE educations SET school_name = '$school_name', time = '$time', description ='$description' WHERE id_education = '$id_education' ";
-  $query = mysqli_query($conn,$sql);
-  if($query){
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
     header('location:' . BASE_URL . '/dashboard/education.php');
   }
 }
 
 //create experience
-if(isset($_POST['experiencecreate'])){
+if (isset($_POST['experiencecreate'])) {
   $jobname = $_POST['experience_name'];
   $time = $_POST['time'];
   $description = $_POST['description_short'];
-  $id_user= $row['id_user'];
+  $id_user = $row['id_user'];
   $sql = "INSERT INTO experiences(work, time, description,id_user) VALUES('$jobname', '$time', '$description', '$id_user'
   )";
-  $query = mysqli_query($conn,$sql);
-  if($query){
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
     header('location:' . BASE_URL . '/dashboard/experience.php');
-  }
-  else{
-
+  } else {
   }
 }
-?>
+
+//edit experience
+if (isset($_GET['idexperience'])) {
+  $experience = selectOne('experiences', ['id_experiences' => $_GET['idexperience']]);
+  $id_experience = $_GET['idexperience'];
+}
+if (isset($_POST['experienceedit'])) {
+  $jobname = $_POST['experience_name'];
+  $time = $_POST['time'];
+  $description = $_POST['description_short'];
+  $sql = "UPDATE experiences SET work = '$jobname', time = '$time', description ='$description' WHERE id_experiences = '$id_experience' ";
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
+    header('location:' . BASE_URL . '/dashboard/experience.php');
+  }
+}
+
+//create skill
+$errors = array();
+$skillname = '';
+$degree = '';
+if (isset($_POST['skillcreate'])) {
+  $skillname = $_POST['skillname'];
+  $degree = $_POST['degree'];
+  $id_user = $row['id_user'];
+  if ((mysqli_num_rows(mysqli_query($conn, "SELECT * FROM skills WHERE skill_name LIKE '$skillname' "))) > 0) {
+    array_push($errors, 'Skill already exists');
+  } else {
+    $sql = "INSERT INTO skills(skill_name,level_skill,id_user) VALUES('$skillname', '$degree', '$id_user') ";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+      header('location:' . BASE_URL . '/dashboard/skill.php');
+    } else {
+      echo 'buồn';
+    }
+  }
+}
+
+//edit
+if (isset($_GET['idskill'])) {
+  $skill = selectOne('skills', ['id_skill' => $_GET['idskill']]);
+  $id_skill = $_GET['idskill'];
+}
+if (isset($_POST['skilledit'])) {
+  $skillname = $_POST['skillname'];
+  $degree = $_POST['degree'];
+  if ((mysqli_num_rows(mysqli_query($conn, "SELECT * FROM skills WHERE skill_name LIKE '$skillname' "))) > 0) {
+    array_push($errors, 'Skill already exists');
+  } else {
+    $sql = "UPDATE skills SET skill_name = '$skillname', level_skill= '$degree' WHERE id_skill = $id_skill";
+    $query = mysqli_query($conn, $sql);
+    if ($query) {
+      header('location:' . BASE_URL . '/dashboard/skill.php');
+    } else {
+      echo 'buồn';
+    }
+  }
+}
+//portfolio
+if (isset($_POST['portfoliocreate'])) {
+  $portfolio_name = $_POST['portfolio_name'];
+  $image = addslashes($_FILES["image"]["tmp_name"]);
+  $image = file_get_contents($image);
+  $id_user = $row['id_user'];
+  $image = base64_encode($image);
+  $sql = "INSERT INTO portfolios(portfolio_name,image,id_user) VALUES('$portfolio_name', '$image','$id_user')";
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
+    header('location:' . BASE_URL . '/dashboard/portfolio.php');
+  } else {
+    echo 'buồn';
+  }
+}
+//edit
+if (isset($_GET['idportfolio'])) {
+  $portfolios = selectOne('portfolios', ['id' => $_GET['idportfolio']]);
+  $id = $_GET['idportfolio'];
+}
+if (isset($_POST['portfolioedit'])) {
+  $portfolio_name = $_POST['portfolio_name'];
+  if ($_FILES["image"]["tmp_name"] === "") {
+    $image = $portfolios['image'];
+  } else {
+    $image = addslashes($_FILES["image"]["tmp_name"]);
+    $image = file_get_contents($image);
+    $image = base64_encode($image);
+  }
+  $sql = "UPDATE portfolios SET portfolio_name = '$portfolio_name', image = '$image' WHERE id = '$id' ";
+  $query = mysqli_query($conn, $sql);
+  if ($query) {
+    header('location:' . BASE_URL . '/dashboard/portfolio.php');
+  } else {
+  }
+}
+
+//Changepasswork
+function ChangePassword($user)
+{
+  $errors = array();
+  if (empty($user['currentpassword'])) {
+    array_push($errors, 'Current password is required');
+  }
+  if (empty($user['password'])) {
+    array_push($errors, ' Password is required');
+  }
+  if (empty($user['passwordConf'])) {
+    array_push($errors, 'Password confirm is required');
+  }
+  if ($user['passwordConf'] !== $user['password']) {
+    array_push($errors, 'Password do not match');
+  }
+  if ($user['password'] === $user['currentpassword'] && $user['currentpassword'] === $user['passwordConf']) {
+    array_push($errors, 'The new password must be different from the old one.');
+  }
+  return $errors;
+}
+$password = '';
+$passwordConf = '';
+$currentpassword = '';
+if (isset($_POST['changepassword'])) {
+  $errors = ChangePassword($_POST);
+  if (count($errors) === 0) {
+    // unset($_POST['passwordConf']);
+    $user =  selectOne('users', ['username' => $_SESSION['username']]);
+    if ($user && password_verify($_POST['currentpassword'], $user['password'])) {
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $sql = "UPDATE users SET password = '$password'";
+      $query = mysqli_query($conn, $sql);
+      if ($query) {
+        header('location:' . BASE_URL . '/dashboard/index.php');
+      } else {
+        header('location:' . BASE_URL . '/dashboard/newPassword.php');
+      }
+    }
+    else {
+      array_push($errors, '
+      Password change failed');
+    }
+
+  } 
+  $password = $_POST['password'];
+  $passwordConf = $_POST['passwordConf'];
+  $currentpassword = $_POST['currentpassword'];
+}

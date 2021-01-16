@@ -45,7 +45,7 @@ require('../db/db.php');
     <div id="page-wrapper">
         <div class="header">
             <h1 class="page-header">
-                Education Page 
+                Education Page
             </h1>
 
 
@@ -58,7 +58,7 @@ require('../db/db.php');
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Blogs
+                            Education
                         </div>
 
                         <div class="panel-body">
@@ -81,7 +81,7 @@ require('../db/db.php');
                                                 <td><?php echo $education['school_name'] ?></td>
                                                 <td><?php echo $education['time'] ?></td>
                                                 <td><?php echo $education['description'] ?></td>
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="educationedit.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href="delete.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="educationedit.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $education['school_name']; ?>')" href="delete.php?ideducation=<?php echo $education['id_education']; ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -103,8 +103,8 @@ require('../db/db.php');
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <!-- jQuery Js -->
-  <!-- jQuery Js -->
-  <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
 
@@ -126,6 +126,11 @@ require('../db/db.php');
         $(document).ready(function() {
             $('#dataTables-example').dataTable();
         });
+    </script>
+    <script>
+        function Del($name) {
+            return confirm("Do you want to delete the: " + $name + "?");
+        }
     </script>
 
     <!-- Custom Js -->

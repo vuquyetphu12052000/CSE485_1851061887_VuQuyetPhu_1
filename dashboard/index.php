@@ -131,7 +131,7 @@ require('../db/db.php');
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $portfolio['portfolio_name'] ?></td>
                                                 <td>
-                                                    <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', base64_encode($portfolio['image']); ?>" alt="">
+                                                    <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
                                                 </td>
                                             </tr>
                                         <?php } ?>

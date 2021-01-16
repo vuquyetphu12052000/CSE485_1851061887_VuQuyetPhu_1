@@ -14,6 +14,8 @@
         <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
     <link href="assets/css/cssprofile.css" rel="stylesheet" />
+    
+    
 
      <!-- Google Fonts-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -42,6 +44,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="profile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
+                        <li><a href="changepassword.php"><i class="fa fa-lock fa-fw"></i> Change Password</a>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>

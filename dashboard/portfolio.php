@@ -47,7 +47,7 @@ require('../db/db.php');
             <h1 class="page-header">
                 Portfolios Page
             </h1>
-            
+
 
         </div>
 
@@ -58,7 +58,7 @@ require('../db/db.php');
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Advanced Tables
+                            Portfolio
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -78,19 +78,21 @@ require('../db/db.php');
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $portfolio['portfolio_name'] ?></td>
                                                 <td>
-                                                    <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', base64_encode($portfolio['image']); ?>" alt="">
+                                                    <img style="width: 100px; height: 50px;" src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
                                                 </td>
-                                                
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="portfolioedit.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $portfolio['portfolio_name']; ?>')" href="delete.php?idportfolio=<?php echo $portfolio['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
+                            <a class="btn btn-primary" href="portfoliocreate.php" style="margin-top:10px">Create Portfolio</a>
 
                         </div>
+                        
                     </div>
-                    <!--End Advanced Tables -->
+                    
                 </div>
             </div>
 
@@ -104,8 +106,8 @@ require('../db/db.php');
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <!-- jQuery Js -->
-  <!-- jQuery Js -->
-  <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
 
@@ -127,6 +129,11 @@ require('../db/db.php');
         $(document).ready(function() {
             $('#dataTables-example').dataTable();
         });
+    </script>
+    <script>
+        function Del($name) {
+            return confirm("Do you want to delete the: " + $name + "?");
+        }
     </script>
 
     <!-- Custom Js -->

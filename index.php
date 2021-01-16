@@ -290,7 +290,7 @@ require('db/db.php');
             <div class="portfolio-item padd" data-category="<?php echo $portfolio['portfolio_name'] ?>">
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
-                  <img src="<?php echo 'data:image/png;base64,', base64_encode($portfolio['image']); ?>" alt="">
+                  <img src="<?php echo 'data:image/png;base64,', ($portfolio['image']); ?>" alt="">
                 </div>
                 <div class="portfolio-info">
                   <h4><?php echo $portfolio['portfolio_name'] ?></h4>

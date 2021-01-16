@@ -80,7 +80,7 @@ require('../db/db.php');
                                                 <td><?php echo $experience['work'] ?></td>
                                                 <td><?php echo $experience['time'] ?></td>
                                                 <td><?php echo $experience['description'] ?></td>
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="eperienceedit.php?ideducation=<?php echo $experience['id_experience']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="experienceedit.php?idexperience= <?php echo $experience['id_experiences']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $experience['work']; ?>')" href="delete.php?idexperience= <?php echo $experience['id_experiences']; ?>" href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -103,8 +103,8 @@ require('../db/db.php');
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <!-- jQuery Js -->
-  <!-- jQuery Js -->
-  <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
 
@@ -126,6 +126,11 @@ require('../db/db.php');
         $(document).ready(function() {
             $('#dataTables-example').dataTable();
         });
+    </script>
+    <script>
+        function Del($name) {
+            return confirm("Do you want to delete the: " + $name + "?");
+        }
     </script>
 
     <!-- Custom Js -->

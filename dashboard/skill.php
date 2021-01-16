@@ -78,13 +78,13 @@ require('../db/db.php');
                                                 <td><?php echo $skill['level_skill'] ?></td>
 
 
-                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                                <td><a href="#?>"><i class="fa fa-eye" aria-hidden="true"></i></a> <a href="skilledit.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> <a onclick="return Del('<?php echo $skill['skill_name']; ?>')" href="delete.php?idskill=<?php echo $skill['id_skill'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
-
+                            <a class="btn btn-primary" href="skillcreate.php" style="margin-top:10px">Create Skill</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,11 @@ require('../db/db.php');
             $('#dataTables-example').dataTable();
         });
     </script>
-
+    <script>
+        function Del($name) {
+            return confirm("Do you want to delete the: " + $name + "?");
+        }
+    </script>
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
 

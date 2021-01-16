@@ -43,3 +43,4 @@ function validateChangePassword($user){
     return $errors;
   
 }
+

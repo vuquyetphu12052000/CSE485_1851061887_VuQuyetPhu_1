@@ -5,8 +5,10 @@ $errors = array();
 $username = '';
 $password = '';
 $passwordConf = '';
+
 $email = '';
 $code = '';
+
 if (isset($_POST['login-btn'])) {
   $errors = validateLogin($_POST);
   if (count($errors) === 0) {
@@ -99,3 +101,6 @@ if (isset($_POST['change-btn'])) {
   $password = $_POST['password'];
   $passwordConf = $_POST['passwordConf'];
 }
+
+?>
+
