@@ -30,7 +30,7 @@ require('../db/db.php');
 
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
+                        <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
                         
                     </li>
                     <li>

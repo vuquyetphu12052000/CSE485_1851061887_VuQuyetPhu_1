@@ -30,7 +30,7 @@ require('../db/db.php');
 
 
         <li>
-          <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
+          <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
 
         </li>
         <li>
@@ -79,7 +79,7 @@ require('../db/db.php');
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" name="experienceedit" class="btn btn-success">Save</button>
+                  <button type="submit" name="experienceedit" class="btn btn-success">Update</button>
                   <a class="btn btn-success" href="experience.php">Cancel</a>
                 </div>
               </form>
@@ -110,6 +110,7 @@ require('../db/db.php');
   <!-- Morris Chart Js -->
   <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
   <script src="assets/js/morris/morris.js"></script>
+  <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
 
   </script> -->
 

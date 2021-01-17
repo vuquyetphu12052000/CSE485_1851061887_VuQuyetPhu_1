@@ -31,7 +31,7 @@ require('../db/db.php');
 
 
                 <li>
-                    <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
+                    <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
 
                 </li>
                 <li>
@@ -93,19 +93,7 @@ require('../db/db.php');
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue">
-                                <i class="fa fa-users fa-5x"></i>
-                                
-                            </div>
-                            <div class="panel-right">
-							<h3>72,525 </h3>
-                             <strong>No. of Visits</strong>
-
-                            </div>
-                        </div>
-                    </div> -->
+              
             </div>
 
             <div class="row">
@@ -334,12 +322,7 @@ require('../db/db.php');
     <!-- Morris Chart Js -->
     <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
-
-
-    <!-- <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>
-
-    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script> -->
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
 
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>

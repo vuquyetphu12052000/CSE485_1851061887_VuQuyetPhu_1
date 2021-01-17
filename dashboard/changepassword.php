@@ -31,7 +31,7 @@ require('../db/db.php');
 
 
         <li>
-          <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown</a>
+          <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
         </li>
         <li>
           <a href="empty.php"><i class="fa fa-fw fa-file"></i> Empty Page</a>
@@ -118,8 +118,8 @@ require('../db/db.php');
   <script src="assets/js/morris/morris.js"></script>
 
 
-  <script src="assets/js/easypiechart.js"></script>
-  <script src="assets/js/easypiechart-data.js"></script>
+  <!-- <script src="assets/js/easypiechart.js"></script>
+  <script src="assets/js/easypiechart-data.js"></script> -->
 
   <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
 
