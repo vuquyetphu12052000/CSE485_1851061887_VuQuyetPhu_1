@@ -30,7 +30,7 @@ require('../db/db.php');
 
 
                 <li>
-                    <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
+                    <a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
 
                 </li>
                 <li>
@@ -77,7 +77,7 @@ require('../db/db.php');
                                     </thead>
                                     <tbody>
                                         <?php $i = 1;
-                                        foreach ($portfolios as $portfolio) { ?>
+                                        foreach ($portfolios1 as $portfolio) { ?>
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $portfolio['portfolio_name'] ?></td>
@@ -91,6 +91,24 @@ require('../db/db.php');
                                     </tbody>
                                 </table>
                             </div>
+                            <nav aria-label="Page navigation" style="text-align: center;">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="portfolio.php?pagep=<?= $Previousp ?>" aria-label="Previous">
+                                            <span aria-label="true">&laquo; Previous</span>
+                                        </a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $pagesp; $i++) : ?>
+                                        <li><a href="portfolio.php?pagep=<?= $i ?>"><?= $i; ?></a></li>
+                                    <?php endfor; ?>
+                                    <li>
+                                        <a href="portfolio.php?pagep=<?= $Nextp ?>" aria-label="Next">
+                                            <span aria-label="true">Next &raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
                             <a class="btn btn-primary" href="portfoliocreate.php" style="margin-top:10px">Create Portfolio</a>
 
                         </div>
@@ -138,12 +156,12 @@ require('../db/db.php');
 
                 });
             });
-        }); 
-        </script>
-        <script >
-            function Del($name) {
-                return confirm("Do you want to delete the: " + $name + "?");
-            }
+        });
+    </script>
+    <script>
+        function Del($name) {
+            return confirm("Do you want to delete the: " + $name + "?");
+        }
     </script>
 
     <!-- Custom Js -->

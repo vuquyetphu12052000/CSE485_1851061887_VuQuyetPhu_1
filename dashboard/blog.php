@@ -30,7 +30,7 @@ require('../db/db.php');
 
 
         <li>
-          <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
+          <a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
         </li>
         <li>
           <a href="empty.php"><i class="fa fa-fw fa-file"></i> Empty Page</a>
@@ -62,8 +62,8 @@ require('../db/db.php');
 
             <div class="panel-body">
               <div class="form-inline">
-              <label for="search" class="font-weight-blod lead text-dark">Search Record</label>
-              <input type="text" name="search" id="search_text" class="form-control form-control-lg rounded-0 border-primary" placeholder="Search...">
+                <label for="search" class="font-weight-blod lead text-dark">Search Record</label>
+                <input type="text" name="search" id="search_text" class="form-control form-control-lg rounded-0 border-primary" placeholder="Search...">
               </div>
               <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -80,13 +80,13 @@ require('../db/db.php');
                   </thead>
                   <tbody>
                     <?php $i = 1;
-                    foreach ($blogs as $blog) { ?>
+                    foreach ($blog1 as $blog) { ?>
                       <tr>
                         <td><?php echo $i++ ?></td>
                         <td><?php echo $blog['blog_name'] ?></td>
                         <td><?php echo $blog['date'] ?></td>
                         <td>
-                          <img style="width: 100px; height: 50px;" src="<?php echo "data:image/png;base64,",($blog['image']); ?>" alt="">
+                          <img style="width: 100px; height: 50px;" src="<?php echo "data:image/png;base64,", ($blog['image']); ?>" alt="">
                         </td>
                         <td><?php echo $blog['description_short'] ?></td>
                         <td><?php echo $blog['tag'] ?></td>
@@ -96,7 +96,25 @@ require('../db/db.php');
                   </tbody>
                 </table>
               </div>
-              <a class="btn btn-primary" href="blogcreate.php" style="margin-top:10px">Create  blog</a>
+              <nav aria-label="Page navigation" style="text-align: center;">
+                <ul class="pagination" >
+                    <li>
+                      <a href="blog.php?pageblog=<?= $Previous ?>" aria-label="Previous">
+                        <span aria-label="true">&laquo; Previous</span>
+                      </a>
+                    </li>
+                    <?php for($i=1; $i<=$pages;$i++) :?>
+                        <li><a href="blog.php?pageblog=<?= $i ?>"><?= $i; ?></a></li>
+                    <?php endfor; ?>
+                    <li>
+                      <a href="blog.php?pageblog=<?= $Next ?>" aria-label="Next">
+                        <span aria-label="true">Next &raquo;</span>
+                      </a>
+                    </li>
+                </ul>
+
+              </nav>
+              <a class="btn btn-primary" href="blogcreate.php" style="margin-top:10px">Create blog</a>
             </div>
           </div>
         </div>
@@ -137,23 +155,25 @@ require('../db/db.php');
       $('#dataTables-example').dataTable();
     });
   </script> -->
-<!-- Search -->
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#search_text").keyup(function(){
-      var search = $(this).val();
-      $.ajax({
-        url:'actionblog.php',
-        method: 'post',
-        data:{query:search},
-        success:function(response){
-          $("#dataTables-example").html(response);
-        }
+  <!-- Search -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#search_text").keyup(function() {
+        var search = $(this).val();
+        $.ajax({
+          url: 'actionblog.php',
+          method: 'post',
+          data: {
+            query: search
+          },
+          success: function(response) {
+            $("#dataTables-example").html(response);
+          }
 
+        });
       });
     });
-  });
-</script>
+  </script>
 
   <script>
     function Del($name) {

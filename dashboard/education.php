@@ -31,7 +31,7 @@ require('../db/db.php');
 
 
                 <li>
-                    <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
+                    <a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
                 </li>
                 <li>
                     <a href="empty.php"><i class="fa fa-fw fa-file"></i> Empty Page</a>
@@ -79,7 +79,7 @@ require('../db/db.php');
                                     </thead>
                                     <tbody>
                                         <?php $i = 1;
-                                        foreach ($educations as $education) { ?>
+                                        foreach ($educations1 as $education) { ?>
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $education['school_name'] ?></td>
@@ -91,6 +91,24 @@ require('../db/db.php');
                                     </tbody>
                                 </table>
                             </div>
+                            <nav aria-label="Page navigation" style="text-align: center;">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="education.php?pageeducation=<?= $Previous1 ?>" aria-label="Previous">
+                                            <span aria-label="true">&laquo; Previous</span>
+                                        </a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $pages1; $i++) : ?>
+                                        <li><a href="education.php?pageeducation=<?= $i ?>"><?= $i; ?></a></li>
+                                    <?php endfor; ?>
+                                    <li>
+                                        <a href="education.php?pageeducation=<?= $Next1 ?>" aria-label="Next">
+                                            <span aria-label="true">Next &raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
                             <a class="btn btn-primary" href="educationcreate.php" style="margin-top:10px">Create Education</a>
                         </div>
                     </div>
@@ -127,7 +145,7 @@ require('../db/db.php');
                     url: 'action.php',
                     method: 'post',
                     data: {
-                        query1:search
+                        query1: search
                     },
                     success: function(response) {
                         $("#dataTables1-example").html(response);

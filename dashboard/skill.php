@@ -75,7 +75,7 @@ require('../db/db.php');
                                     </thead>
                                     <tbody>
                                         <?php $i = 1;
-                                        foreach ($skills as $skill) { ?>
+                                        foreach ($skills1 as $skill) { ?>
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $skill['skill_name'] ?></td>
@@ -88,6 +88,24 @@ require('../db/db.php');
                                     </tbody>
                                 </table>
                             </div>
+                            <nav aria-label="Page navigation" style="text-align: center;">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="skill.php?pages=<?= $Previouss ?>" aria-label="Previous">
+                                            <span aria-label="true">&laquo; Previous</span>
+                                        </a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $pagess; $i++) : ?>
+                                        <li><a href="skill.php?pages=<?= $i ?>"><?= $i; ?></a></li>
+                                    <?php endfor; ?>
+                                    <li>
+                                        <a href="skill.php?pages=<?= $Nexts ?>" aria-label="Next">
+                                            <span aria-label="true">Next &raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
                             <a class="btn btn-primary" href="skillcreate.php" style="margin-top:10px">Create Skill</a>
                         </div>
                     </div>

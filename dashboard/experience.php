@@ -30,7 +30,7 @@ require('../db/db.php');
 
 
                 <li>
-                    <a href="<?php  echo BASE_URL . '/index.php'?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
+                    <a href="<?php echo BASE_URL . '/index.php' ?>"><i class="fa fa-sitemap"></i> ← Back to Online CV</a>
 
                 </li>
                 <li>
@@ -78,7 +78,7 @@ require('../db/db.php');
                                     </thead>
                                     <tbody>
                                         <?php $i = 1;
-                                        foreach ($experiences as $experience) { ?>
+                                        foreach ($experiences1 as $experience) { ?>
                                             <tr>
                                                 <td><?php echo $i++ ?></td>
                                                 <td><?php echo $experience['work'] ?></td>
@@ -90,6 +90,24 @@ require('../db/db.php');
                                     </tbody>
                                 </table>
                             </div>
+                            <nav aria-label="Page navigation" style="text-align: center;">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="experience.php?pageexperience=<?= $Previouse ?>" aria-label="Previous">
+                                            <span aria-label="true">&laquo; Previous</span>
+                                        </a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $pagese; $i++) : ?>
+                                        <li><a href="experience.php?pageexperience=<?= $i ?>"><?= $i; ?></a></li>
+                                    <?php endfor; ?>
+                                    <li>
+                                        <a href="experience.php?pageexperience=<?= $Nexte ?>" aria-label="Next">
+                                            <span aria-label="true">Next &raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
                             <a class="btn btn-primary" href="experiencecreate.php" style="margin-top:10px">Create Education</a>
                         </div>
                     </div>

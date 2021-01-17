@@ -45,6 +45,8 @@ function selectAll($table, $conditions = [])
     return $records;
   }
 }
+
+
 function selectOne($table, $conditions)
 {
   global $conn;
@@ -141,23 +143,72 @@ $portfolios = selectAll('portfolios');
 $sql1 = "SELECT DISTINCT(portfolio_name) FROM portfolios";
 $query1 = mysqli_query($conn, $sql1);
 $q = mysqli_fetch_all($query1);
+//Pagination php;
+$limit = 25;
+$page = isset($_GET['pageblog']) ? $_GET['pageblog'] : 1;
+$start = ($page -1) * $limit;
+$result= $conn->query("SELECT * FROM blog LIMIT $start, $limit");
+$blog1 = $result->fetch_all(MYSQLI_ASSOC);
+$result1 = $conn->query("SELECT count(id_blog) AS id FROM blog");
+$custCount = $result1->fetch_all(MYSQLI_ASSOC);
+$total = $custCount[0]['id'];
+$pages = ceil($total/$limit);
+$Previous = $page -1;
+$Next = $page +1;
 
-
+//education
+$limit1 = 25;
+$page1 = isset($_GET['pageeducation']) ? $_GET['pageeducation'] : 1;
+$start1 = ($page1 -1) * $limit1;
+$result3= $conn->query("SELECT * FROM educations LIMIT $start1, $limit1");
+$educations1 = $result3->fetch_all(MYSQLI_ASSOC);
+$result2 = $conn->query("SELECT count(id_education) AS id FROM educations");
+$custCount1 = $result2->fetch_all(MYSQLI_ASSOC);
+$total1 = $custCount1[0]['id'];
+$pages1 = ceil($total1/$limit1);
+$Previous1 = $page1 -1;
+$Next1 = $page1 +1;
+//experience
+$limite = 25;
+$pagee = isset($_GET['pageexperience']) ? $_GET['pageexperience'] : 1;
+$starte = ($pagee -1) * $limite;
+$resulte= $conn->query("SELECT * FROM experiences LIMIT $starte, $limite");
+$experiences1 = $resulte->fetch_all(MYSQLI_ASSOC);
+$result1e = $conn->query("SELECT count(id_experiences) AS id FROM experiences");
+$custCounte = $result1e->fetch_all(MYSQLI_ASSOC);
+$totale = $custCounte[0]['id'];
+$pagese = ceil($totale/$limite);
+$Previouse = $pagee -1;
+$Nexte = $pagee +1;
+//portfolio
+$limitp = 25;
+$pagep = isset($_GET['pagep']) ? $_GET['pagep'] : 1;
+$startp = ($pagep -1) * $limitp;
+$resultp= $conn->query("SELECT * FROM portfolios LIMIT $startp, $limitp");
+$portfolios1 = $resultp->fetch_all(MYSQLI_ASSOC);
+$result1p = $conn->query("SELECT count(id) AS id FROM portfolios");
+$custCountp = $result1p->fetch_all(MYSQLI_ASSOC);
+$totalp = $custCountp[0]['id'];
+$pagesp = ceil($totalp/$limitp);
+$Previousp = $pagep -1;
+$Nextp = $pagep +1;
+//skill
+$limitsk = 25;
+$pagesk = isset($_GET['pages']) ? $_GET['pages'] : 1;
+$starts = ($pagesk -1) * $limitsk;
+$results= $conn->query("SELECT * FROM skills LIMIT $starts, $limitsk");
+$skills1 = $results->fetch_all(MYSQLI_ASSOC);
+$result1s = $conn->query("SELECT count(id_skill) AS id FROM skills");
+$custCounts = $result1s->fetch_all(MYSQLI_ASSOC);
+$totals = $custCounts[0]['id'];
+$pagess = ceil($totals/$limitsk);
+$Previouss = $page -1;
+$Nexts = $page +1;
+//Pagination php
 $q1 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM blog'));
 $q2 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM portfolios'));
 $q3 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM skills'));
 
-// $user11 = selectOne('users', ['email' => 'vuquyetphu12052000@gmail.com']);
-// var_dump($user11);
-// background profile
-// $file=$_FILES['change-backgroud']['name'];
-// if (isset($file)) {
-//   $file=$_FILES['change-backgroud']['name'];
-//   $file = base64_encode(file_get_contents(addslashes($file)));
-//   $sqlimage = "UPDATE users SET image = '$file'";
-//   $queryimage = mysqli_query($conn,$sqlimage);
-
-// }
 if (isset($_POST['sbm1'])) {
   $fullname = $_POST['fullname'];
   $work = $_POST['description_short'];
