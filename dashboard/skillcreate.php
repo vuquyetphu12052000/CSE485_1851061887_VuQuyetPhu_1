@@ -75,7 +75,7 @@ require('../db/db.php');
 
                 <div class="form-group">
                   <label for="">Degree</label>
-                  <input type="text" name="degree" class="form-control" value="<?php echo $degree ?>" required>
+                  <input type="text" name="degree" class="form-control" value="<?php echo $degree ?>" placeholder="(0% to 100%) " required>
                 </div>
 
                 <div class="form-group">
