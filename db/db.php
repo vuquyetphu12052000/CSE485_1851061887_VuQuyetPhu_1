@@ -137,7 +137,7 @@ $sql1 = "SELECT DISTINCT(portfolio_name) FROM portfolios";
 $query1 = mysqli_query($conn, $sql1);
 $q = mysqli_fetch_all($query1);
 //Pagination php;
-$limit = 1;
+$limit = 25;
 $page = isset($_GET['pageblog']) ? $_GET['pageblog'] : 1;
 $start = ($page -1) * $limit;
 $result= $conn->query("SELECT * FROM blog LIMIT $start, $limit");
@@ -252,7 +252,7 @@ if (isset($_POST['sbm1'])) {
   if ($query111) {
     header('location:' . BASE_URL . '/dashboard/profile.php');
   } else {
-    echo 'khong thanh cong';
+    echo '';
   }
 }
 //create blog

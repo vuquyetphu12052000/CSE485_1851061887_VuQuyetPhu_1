@@ -181,7 +181,7 @@ require('db/db.php');
 
       <!-- Services -->
       <!-- <a name="services"></a> -->
-      <section class="service section" id="services">
+      <!-- <section class="service section" id="services">
         <div class="container">
           <div class="row">
             <div class="section-title padd">
@@ -241,7 +241,7 @@ require('db/db.php');
 
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- Services -->
 
       <!-- portfolio -->
