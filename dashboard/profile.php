@@ -66,19 +66,7 @@ require('../db/db.php');
                                 <div class="container">
                                     <div class="intro">
                                         <img src=" <?php echo 'data:image/png;base64,', ($row['image']); ?>" alt="profile" class="shadow-dark">
-                                        <!-- <form action="" method="POST">
-                                            <div class="form-group" style="margin-top:-25px ; margin-left:100px">
-                                                <label for="upload-backgroud">
-                                                    <i class="change-backgroud fa fa-camera"></i>
-                                                    <input class="field-backgroud" name="change-backgroud" type="file" id="upload-backgroud" style="display:none">
-                                                </label>
-                                            </div>
-                                        </form> -->
-
-                                        <!-- <label for="upload-backgroud">
-                                            <i class="change-backgroud fa fa-camera"></i>
-                                            <input class="field-backgroud" name="change-backgroud" type="file" id="upload-backgroud" style="display:none">
-                                        </label> -->
+                    
                                         <h1><?php echo $row['fullname']; ?></h1>
 
                                         <p>I'm a <?php echo $row['short_description']; ?></p>

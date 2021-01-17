@@ -121,14 +121,7 @@ function deleteblog($table, $id)
   $stmt = executeQuery($sql, ['id_blog' => $id]);
   return $stmt->affected_rows;
 }
-// $conditions = [
-//   'id_user' => 1,
 
-// ];
-
-// $row = selectOne('users', $conditions);
-
-// dd($user);
 $conditions = [
   'id_user' => 1,
 
@@ -144,7 +137,7 @@ $sql1 = "SELECT DISTINCT(portfolio_name) FROM portfolios";
 $query1 = mysqli_query($conn, $sql1);
 $q = mysqli_fetch_all($query1);
 //Pagination php;
-$limit = 25;
+$limit = 1;
 $page = isset($_GET['pageblog']) ? $_GET['pageblog'] : 1;
 $start = ($page -1) * $limit;
 $result= $conn->query("SELECT * FROM blog LIMIT $start, $limit");
@@ -153,8 +146,15 @@ $result1 = $conn->query("SELECT count(id_blog) AS id FROM blog");
 $custCount = $result1->fetch_all(MYSQLI_ASSOC);
 $total = $custCount[0]['id'];
 $pages = ceil($total/$limit);
+
 $Previous = $page -1;
-$Next = $page +1;
+$Next = $page +1 ;
+if($Previous <1 || $Next >= $pages){
+  $Previous=1;
+  $Next = $pages;
+}
+
+
 
 //education
 $limit1 = 25;
@@ -168,6 +168,10 @@ $total1 = $custCount1[0]['id'];
 $pages1 = ceil($total1/$limit1);
 $Previous1 = $page1 -1;
 $Next1 = $page1 +1;
+if($Previous1 <1 ||  $Next1>=$pages1){
+  $Previous1=1;
+  $Next1 = $pages1;
+}
 //experience
 $limite = 25;
 $pagee = isset($_GET['pageexperience']) ? $_GET['pageexperience'] : 1;
@@ -180,6 +184,10 @@ $totale = $custCounte[0]['id'];
 $pagese = ceil($totale/$limite);
 $Previouse = $pagee -1;
 $Nexte = $pagee +1;
+if($Previouse <1 ||  $Nexte>=$pagese){
+  $Previouse=1;
+  $Nexte=$pagese;
+}
 //portfolio
 $limitp = 25;
 $pagep = isset($_GET['pagep']) ? $_GET['pagep'] : 1;
@@ -192,6 +200,10 @@ $totalp = $custCountp[0]['id'];
 $pagesp = ceil($totalp/$limitp);
 $Previousp = $pagep -1;
 $Nextp = $pagep +1;
+if($Previousp <1 ||  $Nextp >=$pagesp){
+  $Previousp=1;
+  $Nextp=$pagesp;
+}
 //skill
 $limitsk = 25;
 $pagesk = isset($_GET['pages']) ? $_GET['pages'] : 1;
@@ -204,6 +216,10 @@ $totals = $custCounts[0]['id'];
 $pagess = ceil($totals/$limitsk);
 $Previouss = $page -1;
 $Nexts = $page +1;
+if($Previouss <1 ||  $Nexts >=$pagess){
+  $Previouss=1;
+  $Nexts=$pagess;
+}
 //Pagination php
 $q1 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM blog'));
 $q2 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM portfolios'));
@@ -212,10 +228,6 @@ $q3 = mysqli_num_rows(mysqli_query($conn, 'SELECT * FROM skills'));
 if (isset($_POST['sbm1'])) {
   $fullname = $_POST['fullname'];
   $work = $_POST['description_short'];
-  // if($_POST['image'] =''){
-  //   $image = base64_encode($row['image']);
-  // }
-  // else{
   if ($_FILES["image"]["tmp_name"] === "") {
     $image = $row['image'];
   } else {
@@ -260,31 +272,11 @@ if (isset($_POST['blogcreate'])) {
   if ($query) {
     header('location:' . BASE_URL . '/dashboard/blog.php');
   } else {
-    echo 'không thành công';
+    echo '';
   }
 }
 //editblog
-// if (isset($_GET['id'])) {
-//   $blog = selectOne('blog', ['id_blog' => $_GET['id']]);
-// }
-// if (isset($_POST['blogedit'])) {
-//   if ($_FILES["image"]["tmp_name"] === "") {
-//     $image = $blog['image'];
-//   } else {
-//     $image = addslashes($_FILES["image"]["tmp_name"]);
-//     $image = file_get_contents($image);
-//     $image = base64_encode($image);
-//   }
-//   $data = [
-//     'blog_name' => $_POST["blogname"],
-//     'date' => $_POST["date"],
-//     'image' => $image,
-//     'description_short' => $_POST["description"],
-//     'tag' => $_POST["tag"]
-//   ];
-//   // dd($data);
-//   update('blog', ['id_blog' => $_GET['id']], $data);
-// }
+
 if (isset($_GET['id'])) {
   $blog = selectOne('blog', ['id_blog' => $_GET['id']]);
   $id = $_GET['id'];
@@ -317,16 +309,6 @@ if(isset($_GET['id'])){
   // var_dump($blog);
 }
 
-// Create education
-// if(isset($_POST['educationcreate'])){
-//   unset($_POST['educationcreate']);
-//   $_POST['id_user']= $row['id_user'];
-//   dd($_POST);
-//   $education_id=create('educations',$_POST);
-//   $education = selectOne('educations',$education_id);
-//   // dd($_POST);
-
-// }
 if (isset($_POST['educationcreate'])) {
   $school_name = $_POST['school_name'];
   $time = $_POST['time'];
@@ -451,7 +433,7 @@ if (isset($_POST['portfoliocreate'])) {
   if ($query) {
     header('location:' . BASE_URL . '/dashboard/portfolio.php');
   } else {
-    echo 'buồn';
+    ;
   }
 }
 //edit
