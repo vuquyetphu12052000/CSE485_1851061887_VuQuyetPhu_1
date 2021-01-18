@@ -47,15 +47,11 @@ require('../db/db.php');
                         <h1 class="page-header">
                             Empty Page <small>Create new page.</small>
                         </h1>
-						<ol class="breadcrumb">
-					  <li><a href="#">Home</a></li>
-					  <li><a href="#">Empty</a></li>
-					  <li class="active">Data</li>
-					</ol> 
+						
 									
 		</div>
             <div id="page-inner"> 
-				 <footer><p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez.com</a></p></footer>
+				 
 				</div>
              <!-- /. PAGE INNER  -->
             </div>
@@ -71,6 +67,7 @@ require('../db/db.php');
     <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
+    <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
     
    
 </body>

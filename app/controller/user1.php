@@ -15,7 +15,7 @@ if (isset($_POST['login-btn'])) {
     $user = selectOne('users', ['username' => $_POST['username']]);
     // dd($user['password']);
     if ($user && password_verify($_POST['password'], $user['password'])) {
-      $_SESSION['id'] = $user['id'];
+      $_SESSION['id'] = $user['id_user'];
       $_SESSION['username'] = $user['username'];
       $_SESSION['password'] = $user['password'];
 

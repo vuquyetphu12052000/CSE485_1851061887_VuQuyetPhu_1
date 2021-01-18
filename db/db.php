@@ -243,8 +243,9 @@ if (isset($_POST['sbm1'])) {
   $birthday = $_POST['birthday'];
   $city = $_POST['city'];
   $description = $_POST['description'];
+  $id_users= $_SESSION['id'];
 
-  $sql111 = "UPDATE users SET fullname = '$fullname' , short_description = '$work', `image`='$image' , birthday = '$birthday' , city = '$city', description = '$description'";
+  $sql111 = "UPDATE users SET fullname = '$fullname' , short_description = '$work', `image`='$image' , birthday = '$birthday' , city = '$city', description = '$description' WHERE id_user = '$id_users' ";
 
 
 
