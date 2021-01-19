@@ -300,7 +300,7 @@ if (isset($_POST['blogedit'])) {
   if ($query111) {
     header('location:' . BASE_URL . '/dashboard/blog.php');
   } else {
-    echo 'khong thanh cong';
+    echo '';
   }
 }
 
@@ -393,7 +393,7 @@ if (isset($_POST['skillcreate'])) {
     if ($query) {
       header('location:' . BASE_URL . '/dashboard/skill.php');
     } else {
-      echo 'buồn';
+      echo '';
     }
   }
 }
@@ -406,16 +406,14 @@ if (isset($_GET['idskill'])) {
 if (isset($_POST['skilledit'])) {
   $skillname = $_POST['skillname'];
   $degree = $_POST['degree'];
-  if ((mysqli_num_rows(mysqli_query($conn, "SELECT * FROM skills WHERE skill_name LIKE '$skillname' "))) > 0) {
-    array_push($errors, 'Skill already exists');
-  } else {
+  
     $sql = "UPDATE skills SET skill_name = '$skillname', level_skill= '$degree' WHERE id_skill = $id_skill";
     $query = mysqli_query($conn, $sql);
     if ($query) {
       header('location:' . BASE_URL . '/dashboard/skill.php');
     } else {
-      echo 'buồn';
-    }
+      echo '';
+    
   }
 }
 //skill view
